@@ -189,7 +189,7 @@ def compile_and_fit(model, window, patience=2):
   return history
 
 #multi-step dense network
-CONV_WIDTH = 6
+CONV_WIDTH = 9
 conv_window = WindowGenerator(
     input_width=CONV_WIDTH,
     label_width=1,
@@ -219,4 +219,4 @@ val_performance['Conv'] = conv_model.evaluate(conv_window.val)
 performance['Conv'] = conv_model.evaluate(conv_window.test, verbose=0)
 
 #un-normalize the mean absolute error
-(train_std['target'] * history.history['mean_absolute_error'][0] ) + train_mean['target']
+print((train_std['target'] * history.history['mean_absolute_error'][0] ) + train_mean['target'])
