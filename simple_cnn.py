@@ -16,6 +16,8 @@ df = merged_df()
 
 print(df.head())
 
+print(df.drop(columns=['target']).columns.values)
+
 #test-train-validation split on the data
 column_indices = {name: i for i, name in enumerate(df.columns)}
 
