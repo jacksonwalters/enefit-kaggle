@@ -9,17 +9,12 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import tensorflow as tf
+from load_data import merged_df
 
 #load the training data, dropping NaN's
-df = pd.read_csv("train.csv").dropna()
+df = merged_df()
 
-#helper function to convert strings to integers representing a time
-from datetime import datetime
-def datestr_to_int(datetime_str):
-    return datetime.strptime(datetime_str, '%Y-%m-%d %H:%M:%S').timestamp()
-
-#apply str to int conversion to dataset
-df['datetime'] = df['datetime'].apply(datestr_to_int)
+print(df.head())
 
 #test-train-validation split on the data
 column_indices = {name: i for i, name in enumerate(df.columns)}
