@@ -215,3 +215,8 @@ performance['Conv'] = conv_model.evaluate(conv_window.test, verbose=0)
 
 #un-normalize the mean absolute error
 print((train_std['target'] * history.history['mean_absolute_error'][0] ) + train_mean['target'])
+
+# save the model to disk
+import pickle
+cnn_model_filename = '../models/cnn_model.sav'
+pickle.dump(conv_model, open(cnn_model_filename, 'wb'))
