@@ -53,6 +53,9 @@ def merged_df():
     #merge forecast_weather on forecast date
     df = df.merge(forecast_weather, on=['data_block_id','forecast_date'],how='left')
 
+    #rename datetime to prediction datetime
+    df = df.rename(columns={'datetime': 'prediction_datetime'})
+
     #drop NaN rows
     df = df.dropna()
 
