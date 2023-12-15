@@ -16,8 +16,6 @@ df = merged_df()
 
 print(df.head())
 
-print(df.drop(columns=['target']).columns.values)
-
 #test-train-validation split on the data
 column_indices = {name: i for i, name in enumerate(df.columns)}
 
@@ -220,6 +218,5 @@ print((train_std['target'] * history.history['mean_absolute_error'][0] ) + train
 
 # save the model to disk
 import pickle
-conv_model.feature_names = list(df.drop(columns=['target']).columns.values)
 cnn_model_filename = '../models/cnn_model.sav'
 pickle.dump(conv_model, open(cnn_model_filename, 'wb'))
