@@ -41,10 +41,9 @@ def merged_df():
     #load forecast_weather
     forecast_weather = pd.read_csv("forecast_weather.csv")
     #convert strings to ints
-    forecast_weather = forecast_weather.drop(columns=['origin_datetime'])
-    forecast_weather['forecast_datetime'] = forecast_weather['forecast_datetime'].apply(lambda x: datestr_to_int(x,'%Y-%m-%d %H:%M:%S%z'))
+    forecast_weather['forecast_datetime'] = forecast_weather['forecast_datetime'].apply(lambda x: datestr_to_int(x,'%Y-%m-%d %H:%M:%S'))
     forecast_weather = forecast_weather.rename(columns={'forecast_datetime':'forecast_date'})
-    forecast_weather['data_block_id'] -= 1
+    forecast_weather['forecast_date'] -= 10_800
 
     print("merging train and gas_prices...")
     #merge gas prices and train.csv data
