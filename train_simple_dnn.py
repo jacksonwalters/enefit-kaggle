@@ -65,4 +65,4 @@ dnn_model_filename = '../models/dnn_model.sav'
 pickle.dump(dnn_model, open(dnn_model_filename, 'wb'))
 
 #save model using keras
-dnn_model.save('../models/dnn_model.keras')
+dnn_model.save('../models/dnn_model.keras',save_format='tf')
