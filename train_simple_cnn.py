@@ -7,14 +7,15 @@ import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import seaborn as sns
 import tensorflow as tf
 from load_data import merged_df
 
 #load the training data, dropping NaN's
 df = merged_df()
 
-print(df.head())
+#reduce dataset to smaller size
+REDUCED_DATASET_SIZE = 100_000
+df = df[:REDUCED_DATASET_SIZE].copy()
 
 #test-train-validation split on the data
 column_indices = {name: i for i, name in enumerate(df.columns)}
