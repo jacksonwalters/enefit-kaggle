@@ -30,8 +30,11 @@ test_labels = test_dataset['target']
 train_features = train_dataset.drop(columns=['target'])
 test_features = test_dataset.drop(columns=['target'])
 
-#create a normalization layer
-normalizer = tf.keras.layers.Normalization(axis=-1)
+#get number of features
+num_features = len(test_features.columns.values)
+
+#create a normalization layer explicitly specifying input_shape to avoid keras load errors
+normalizer = tf.keras.layers.Normalization(input_shape=[num_features,],axis=-1)
 
 #normalize the train_features by subtracting the mean and dividing by the std deviation
 normalizer.adapt(np.array(train_features))
@@ -65,4 +68,4 @@ dnn_model_filename = '../models/dnn_model.sav'
 pickle.dump(dnn_model, open(dnn_model_filename, 'wb'))
 
 #save model using keras
-dnn_model.save('../models/dnn_model.keras',save_format='tf')
+dnn_model.save('../models/dnn_model.keras')
