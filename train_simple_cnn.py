@@ -221,3 +221,6 @@ print((train_std['target'] * history.history['mean_absolute_error'][0] ) + train
 import pickle
 cnn_model_filename = '../models/cnn_model.sav'
 pickle.dump(conv_model, open(cnn_model_filename, 'wb'))
+
+#save model using keras
+conv_model.save('../models/cnn_model.keras')
