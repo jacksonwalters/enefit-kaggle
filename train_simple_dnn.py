@@ -49,7 +49,7 @@ def build_and_compile_model(norm):
   ])
 
   model.compile(loss='mean_absolute_error',
-                optimizer=tf.keras.optimizers.Adam(0.001))
+                optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001))
   return model
 
 dnn_model = build_and_compile_model(normalizer)
