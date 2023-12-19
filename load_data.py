@@ -42,7 +42,8 @@ def merged_df():
     forecast_weather = pd.read_csv("forecast_weather.csv")
     #convert strings to ints
     forecast_weather['forecast_datetime'] = forecast_weather['forecast_datetime'].apply(lambda x: datestr_to_int(x,'%Y-%m-%d %H:%M:%S'))
-    forecast_weather = forecast_weather.drop(columns=['origin_datetime','direct_solar_radiation','surface_solar_radiation_downwards','snowfall','hours_ahead'])
+    forecast_weather = forecast_weather.drop(columns=['origin_datetime'])
+    #forecast_weather = forecast_weather.drop(columns=['direct_solar_radiation','surface_solar_radiation_downwards','snowfall','hours_ahead'])
     forecast_weather = forecast_weather.rename(columns={'forecast_datetime':'forecast_date'})
     forecast_weather['forecast_date'] -= 10_800
 
